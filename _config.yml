@@ -15,7 +15,7 @@ date_format: '%Y-%m-%d'
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
 url:
-baseurl: blog
+baseurl:
 permalink: pretty
 
 # Pagination
@@ -36,7 +36,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "
 
 # Separator
 #excerpt_separator: <!-- more -->
-name: Woongs know
+
 # Code Highlighter
 ## 'pygments' is unsupported on GitHub Pages now.
 highlighter: rouge
