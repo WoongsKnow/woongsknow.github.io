@@ -1,0 +1,68 @@
+/* Reset */
+
+body,
+ul {
+  margin: 0;
+  padding: 0;
+
+}
+
+li {
+  list-style-type: none;
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background-color: #222;
+}
+
+.wrapper {
+  width: 800px;
+  margin: 100px auto;
+
+}
+
+.sq {
+  background-color: #111;
+  color: white;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.sq-item {
+  float: left;
+  width: 25%;
+  padding-top: 25%;
+  position: relative;
+}
+
+.sq-item-large {
+  width: 50%;
+  padding-top: 50%;
+}
+
+.sq-item-long {
+  padding-top: 75%;
+
+}
+
+.sq-item-float-right {
+  float: right;
+}
+
+.sq-item-anchor {
+  background-color: orange;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 1rem;
+  padding: 1rem;
+  /*  1rem 폰트 사이즈로 줄 수 있음.*/
+}
