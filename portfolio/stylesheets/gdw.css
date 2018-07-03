@@ -1,10 +1,27 @@
 * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; color: #666666;}
 
+
+
 .logo {
   margin: 20px;
 }
+
 .main-footer {
   position: fixed;
   bottom: 0;
+  padding: 30px;
 }
 
+.main-footer i {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.container {
+  padding: 5px;
+}
+
+.container .item {
+  float: left;
+  padding: 5px;
+}
