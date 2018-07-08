@@ -2,7 +2,7 @@
 
 .sidebar {
   position: fixed;
-  border-right: 1px solid;
+  border-right: 1px solid #dddddd;
   width: 300px;
   left: 0;
   top: 0;
