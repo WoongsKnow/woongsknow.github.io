@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      .container {
+        width: 100%;
+        height: 100%;
+        background-color:cadetblue;
+      }
+      /* div > ul:nth-child(2) {
+        color: white;
+      } */
+      /* div > ul {
+        color: white;
+      } */
+      /* div:first-child {
+        color: white;
+      } */
+      
+      /* #main > li.text-white {
+        color: white;
+      } */
+      #main > li.text-white ~ li {
+        color: white;
+      }
+      li:hover {
+        color: white;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <span class="text-white">
+        span Tag 입니다.
+      </span> 
+      <ul id="main" class="text-white">
+        <li>1</li>
+        <li class="text-white">2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>
+          5
+          <ul>
+              <li class="text-white">1</li>
+              <li>2</li>
+              <li>3</li>
+          </ul>
+        </li>
+      </ul>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </div>
+  </body>
+</html>
