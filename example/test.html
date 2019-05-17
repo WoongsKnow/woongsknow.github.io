@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <textarea id="test" name="name" rows="8" cols="80"></textarea>
+  <button onclick="dd()" type="button" name="button">parse</button>
+  <div id="content"></div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.2/markdown-it.js"></script>
+  <script>
+
+      // marked('# Marked in browser\n\nRendered by **marked**.');
+      var test = '|          **Type**           | **Rate**  |              **Assessment**              |' +
+      '| ------------------------- | ------- | -------------------------------------- |' +
+      '|    Corporate Income Tax     | 11~27.5%  |        Taxable under current law         |' +
+      '| Corporate or Individual VAT |    10%    |                Undecided                 |' +
+      '|         Income Tax          | 6.6~46.2% |        Taxable under current law         |' +
+      '|      Capital Gains Tax      | 6.6~46.2% | Undecided, but for retail investors, levying  Capital Gains Tax is advisable |' +
+      '|  Inheritance and Gift Tax   |  10~50%   |        Taxable under current law         |';
+
+//       test = 'First Header | Second Header' +
+// '------------ | -------------' +
+// 'Content Cell | Content Cell' +
+// 'Content Cell | Content Cell';
+
+    // test = 'a     | b' +
+    //       '---   | ---' +
+    //       'aa  | bb';
+
+    var md = window.markdownit({
+      html: true,
+      linkify: true,
+      typographer: true,
+    });
+    test = document.querySelector('#test').value;
+    console.log(md.render(test));
+    document.getElementById('content').innerHTML = md.render(test);
+    function dd() {
+      var test = document.querySelector('#test').value;
+      console.log(md.render(test));
+      document.getElementById('content').innerHTML = md.render(test);
+    }
+  </script>
+</body>
+</html>

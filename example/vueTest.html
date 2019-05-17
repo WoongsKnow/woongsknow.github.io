@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+      {{ message }}
+      <span v-for="num in test">{{ num }}</span>
+      <button @click="addNum">test</button>
+  </div>
+  {{ message }}
+  <script>
+    var app = new Vue({
+      el: '#app',
+      created() {
+        let db;
+        let room = window.indexedDB.open('room');
+        console.log(room);
+        room.onupgradeneeded = (event) => {
+          console.log('onupgradeneeded');
+        };
+        room.onerror = (event) => { // request.errorCode 에 대해 무언가를 한다!
+          console.log('onerror');
+        };
+        room.onsuccess = (event) => { // request.result 에 대해 무언가를 한다!
+          console.log('onsuccess');
+          db = event.target.result;
+          console.log(db);
+        };
+      },
+      data: {
+        message: '안녕하세요 Vue!',
+        test: [1, 2, 3],
+      },
+      methods: {
+        addNum() {
+          this.test.push(this.test.length + 1);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
