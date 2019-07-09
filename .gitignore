@@ -2,3 +2,4 @@ _site
 .idea
 .sass-cache
 .jekyll-metadata
+example/react_start/node_modules
