@@ -3,71 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Vue</title>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
-
 <body>
   <div id="app">
-    <button v-on:click:="fn_click()">test</button>
   </div>
-  
-  <script>
-    var app = new Vue({
-      el: "#app",
-      data: {
-        input: {
-          movieNm: ""
-        },
-        api: {
-          root: "http://www.kobis.or.kr",
-          boxoffice: "",
-          search: "",
-          detail: ""
-        },
-        movie: {
-          list: [],
-          detail: {}
-        },
-        topic: "html5"
-      },
-      methods: {
-        fn_hello: function() {
-          console.log("hello")
-        },
-        fn_click: function() {
-          console.log("click")
-        }
-      },
-      beforeCreate: function() {
-        console.log("beforeCreate")
-      },
-      created: function() {
-        console.log("created");
-        // 생성 되었을 떄.
-        this.api.boxoffice = this.api.root + "/kobiso/web/rest/boxoffice/seact.json";
-      },
-      beforeMount: function() {
-        console.log("beforeMount")
-      },
-      mounted: function() {
-        console.log("mounted");
-        // 마운트 되었을때 
-        this.fn_hello();
-      },
-      beforeUpdate: function() {
-        console.log("beforeUpdate")
-      },
-      updated: function() {
-        console.log("updated")
-      },
-      beforeDestroy: function() {
-        console.log("beforeDestroy")
-      },
-      destroyed: function() {
-        console.log("destroyed")
-      }
-
-    });
-  </script>
+  <script src="./dist/app.js"></script>
 </body>
 </html>
