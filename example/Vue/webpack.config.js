@@ -1,5 +1,6 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   mode: 'development',
   devtool: 'eval', // 배포할땐 hidden-source ? 나중에 제대로 공부하자.
@@ -16,6 +17,12 @@ module.exports = {
       test: /\.vue$/, // 파일명이 .vue로 끝나는 파일 $는 파일의 끝이라는 표현
       loader: 'vue-loader', // npm install 필요
       //user: 'vue-loader' 이것도 가능.
+    }, {
+      test: /\.css$/,
+      use: [
+        'vue-style-loader',
+        'css-loader',
+      ], // vue에서 CSS를 처리하기 위한 룰.
     }], // 어떻게 합칠지에 대한 룰. 이렇게 하면 .vue로 끝나는 파일은 vue-loader가 처리한다는 뜻
   }, // 
   plugins: [
@@ -26,5 +33,6 @@ module.exports = {
     filename: 'app.js',
     path: path.join(__dirname + '/dist'), // 폴더 경로 
     // path라는 것은 현재 경로를 나타내 준다. node에서 제공하는 모듈
+    publicPath: '/dist',
   },
 };
