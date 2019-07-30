@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>좋아요 버튼</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button @click="fn_click" >{{ liked ? 'Unlike' : 'Like' }}</button>
+  </div>
+  <script>
+  var app = new Vue({
+      el: "#app",
+      data: {
+        liked: false,
+      },
+      methods: {
+        fn_hello: function() {
+          console.log("hello Vue!!");
+        },
+        fn_click: function() {
+          console.log("click");
+          this.liked = !this.liked;
+        }
+      },
+      beforeCreate: function() {
+        console.log("beforeCreate");
+      },
+      created: function() {
+        console.log("created");
+      },
+      beforeMount: function() {
+        console.log("beforeMount");
+      },
+      mounted: function() {
+        console.log("mounted");
+        this.fn_hello();
+      },
+      beforeUpdate: function() {
+        console.log("beforeUpdate");
+      },
+      updated: function() {
+        console.log("updated");
+      },
+      beforeDestroy: function() {
+        console.log("beforeDestroy");
+      },
+      destroyed: function() {
+        console.log("destroyed");
+      }
+    });
+  </script>
+</body>
+</html>
