@@ -4,3 +4,4 @@ _site
 .jekyll-metadata
 example/react_start/node_modules
 example/Vue/node_modules
+portfolio/photographerWoong/node_modules
