@@ -1,4 +1,4 @@
-<html lang="en">
+  <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,41 +6,80 @@
   <title>Document</title>
 </head>
   <div>Test</div>
+  <button onclick="get('1')">1</button>
+  <button onclick="get('2')">2</button>
+  <button onclick="get('3')">3</button>
+  <div>
+    <button onclick="set()">추가</button>
+  </div>
 <body>
+    <script src="js/indexedDB.js"></script>
+    <script src="js/Model/Room.js"></script>
   <script>
-    // let db;
-    // let room = window.indexedDB.open('room');
-    // console.log(room);
-    // room.onupgradeneeded = (event) => {
+    // const roomData = [
+    // { roomId: '1', name: '서귀포 방', img:[] },
+    // { roomId: '2', name: '대정 방', img:[] },
+    // { roomId: '3', name: '성산 방', img:[] },
+    // ]
+    let db;
+    let airbnbRequest = window.indexedDB.open('airbnb', 2);
+    console.log('airbnbRequest', airbnbRequest);
+    airbnbRequest.onsuccess = (event) => { // request.result 에 대해 무언가를 한다!
+      console.log('onsuccess');
+      db = event.target.result;
+      console.log(db); // let store = db.createObjectStore('test', {keyPath: 'id'});
+      let tracsaction = db.transaction(['room']);
+      console.log('tracsaction', tracsaction);
+      let objectStore = tracsaction.objectStore('room');
+      console.log('objectStore', objectStore);
+      let data = objectStore.getAll();
+      console.log(data);
+    };
+    airbnbRequest.onupgradeneeded = (event) => {
+      console.log('onupgradeneeded')
+      const db = event.target.result;
+      var objectStore = db.createObjectStore("room", { keyPath: "roomId" });
+      objectStore.createIndex('roomId', 'roomId', { unique: true,  });
+      objectStore.createIndex('name', 'name', { unique: false, });
+      objectStore.createIndex('image', 'image', { unique: false, });
 
-    // };
-    // room.onerror = (event) => {
-    //   console.log('onerror');
-    //   // request.errorCode 에 대해 무언가를 한다!
-    // };
-    // room.onsuccess = (event) => {
-    //   // request.result 에 대해 무언가를 한다!
-    //   console.log(event);
-    //   db = event.target.result;
-    //   console.log('onsuccess');
-    //   console.log(db);
-    //   let store = db.createdObjectStore('test', {keyPath: 'id'});
-    // };
-
-    var db = indexedDB.open('books');
-    if (db.version !== '1.0') {
-      var olddb = indexedDB.open('books', 'Book store');
-      olddb.createObjectStore('books', 'isbn');
-      olddb.createIndex('BookAuthor', 'books', 'author', false);
-      olddb.setVersion("1.0");  
+      for (let i in roomData) {
+        objectStore.add(roomData[i]);
+      }
+      console.log(objectStore);
+    };
+    airbnbRequest.onerror = (event) => { // request.errorCode 에 대해 무언가를 한다!
+      console.log('onerror');
+    };
+    
+    function get(id) {
+      let tracsaction = db.transaction(['room']);
+      let objectStore = tracsaction.objectStore('room');
+      let data = objectStore.get(id);
+      console.log(data);
+      data.onsuccess = (event) => {
+        console.log('success', event.target.result);
+      }
     }
-    // db.version === "1.0";  
-    var index = db.openIndex('BookAuthor');
-    var matching = index.get('fred');
-    if (matching)
-      report(matching.isbn, matching.name, matching.author);
-    else
-      report(null);
+    function set() {
+      let tracsaction = db.transaction(['room'], 'readwrite');
+      let objectStore = tracsaction.objectStore('room');
+      objectStore.add(
+        { roomId: '4', name: '테스트 방', img:[] }
+      );
+      db.transaction(['room'], 'readwrite').objectStore('room').add(
+        { roomId: '5', name: '테스트 방11', img:[] }
+      ).onsuccess = (event) => {
+        console.log(event.target.result);
+      }
+    }
+
+    var today = new Date();
+    var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0);
+    var lastDate2 = new Date(today.getFullYear(),today.getMonth()+1,1);
+    
+
+    console.log(lastDate2)
   </script>
 </body>
 </html>

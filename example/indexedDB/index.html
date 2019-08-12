@@ -1,0 +1,49 @@
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+    </head>
+      <div>Test</div>
+      <button onclick="get('1')">1</button>
+      <button onclick="get('2')">2</button>
+      <button onclick="get('3')">3</button>
+      <div>
+        <button onclick="set()">추가</button>
+      </div>
+    <body>
+        <script src="js/indexedDB.js"></script>
+        <script src="js/Model/Room.js"></script>
+      <script>
+        function get(id) {
+          let tracsaction = db.transaction(['room']);
+          let objectStore = tracsaction.objectStore('room');
+          let data = objectStore.get(id);
+          console.log(data);
+          data.onsuccess = (event) => {
+            console.log('success', event.target.result);
+          }
+        }
+        function set() {
+          let tracsaction = db.transaction(['room'], 'readwrite');
+          let objectStore = tracsaction.objectStore('room');
+          objectStore.add(
+            { roomId: '4', name: '테스트 방', img:[] }
+          );
+          db.transaction(['room'], 'readwrite').objectStore('room').add(
+            { roomId: '5', name: '테스트 방11', img:[] }
+          ).onsuccess = (event) => {
+            console.log(event.target.result);
+          }
+        }
+    
+        var today = new Date();
+        var lastDate = new Date(today.getFullYear(),today.getMonth()+1,0);
+        var lastDate2 = new Date(today.getFullYear(),today.getMonth()+1,1);
+        
+    
+        console.log(lastDate2)
+      </script>
+    </body>
+    </html>
