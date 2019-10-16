@@ -9,5 +9,20 @@
   <div>
     test
   </div>
+  <input id="check" type="checkbox">
+  <textarea name="" id="txt" cols="30" rows="10">
+
+  </textarea>
+  <script>
+    const txt = document.querySelector('#txt');
+    const check = document.querySelector('#check');
+    txt.addEventListener('focus', function() {
+      check.checked = true;
+    });
+    txt.addEventListener('input', function() {
+      check.checked = true;
+    });
+
+  </script>
 </body>
 </html>
