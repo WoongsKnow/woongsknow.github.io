@@ -2,7 +2,7 @@ Vue.component('star', {
   template: 
   '<div>' + 
   '<i v-for="n in score1"class="fas fa-star"></i>' + 
-  '<i v-if="score1 < 5" v-for="n in (5 - score1)"class="far fa-star"></i>' + 
+  '<i v-if="score1 < 5" v-for="n in (5 - score1)"class="far fa-star">ㅑㅑㅑ</i>' + 
   '</div>',
   props: {
     score: Number,
